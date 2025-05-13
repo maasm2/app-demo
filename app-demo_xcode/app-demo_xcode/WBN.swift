@@ -38,12 +38,14 @@ struct ContentView: View {
         let readTypesWGT: Set = [wgt]
         let writeTypesWGT: Set = [wgt]
         
-        healthStore.requestAuthorization(toShare: writeTypesWGT, read: readTypesWGT){(success, error) in
-            if success {
+        healthStore.requestAuthorization(toShare: writeTypesWGT, read: readTypesWGT) { (success, error) in
+           
+            let readStatus = healthStore.authorizationStatus(for: wgt)
+            
+            if readStatus == .sharingAuthorized {
                 print("We have access to the weight data yeaaaaaah")
-            }
-            if let error = error {
-                print("We don't have access to the weight data: \(error.localizedDescription)")
+            } else {
+                print("We don't have access: User denied")
             }
         }
     }
