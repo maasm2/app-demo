@@ -16,10 +16,13 @@ struct ContentView: View {
             Image(systemName: "heart.fill")
             Text("Welcome to our little Health App")
         }
-        .onAppear {
+        .onAppear {  // Move .onAppear to the VStack
             askForAutorization()
         }
     }
+    
+    
+}
     
     func askForAutorization(){
         if(!HKHealthStore.isHealthDataAvailable()){
@@ -44,7 +47,7 @@ struct ContentView: View {
             }
         }
     }
-}
+
 
 #Preview {
     ContentView()

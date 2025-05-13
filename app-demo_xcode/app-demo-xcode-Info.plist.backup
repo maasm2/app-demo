@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSHealthShareUsageDescription</key>
+	<string>the demo app needs to read health data to display your health information</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>the demo app needs to write health data to save your health records</string>
+</dict>
+</plist>
