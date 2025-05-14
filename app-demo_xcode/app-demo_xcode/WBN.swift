@@ -16,7 +16,7 @@ struct ContentView: View {
             Image(systemName: "heart.fill")
             Text("Welcome to our little Health App")
         }
-        .onAppear {  // Move .onAppear to the VStack
+        .onAppear {
             askForAutorization()
         }
     }
@@ -31,7 +31,7 @@ struct ContentView: View {
         }
         
         guard let wgt = HKObjectType.quantityType(forIdentifier: .bodyMass) else {
-            print("The user didn't allow the access to this data")
+            print("The user didn't allow access to this data")
             return
         }
         
