@@ -12,12 +12,21 @@ let healthStore = HKHealthStore()
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "heart.fill")
-            Text("Welcome to our little Health App")
-        }
-        .onAppear {
-            askForAutorization()
+        NavigationStack {
+            VStack {
+                Image(systemName: "heart.fill")
+                Text("Welcome to our little Health App")
+                
+                NavigationLink(destination: SecondView()) {
+                    VStack {
+                        Text("Your weight")
+                        Image(systemName: "scalemass.fill")
+                    }
+                }
+            }
+            .onAppear {
+                askForAutorization()
+            }
         }
     }
     

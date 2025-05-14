@@ -391,7 +391,7 @@
 				CODE_SIGN_ENTITLEMENTS = "app-demo_xcode/app_demo_xcode.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CH9383WKGT;
+				DEVELOPMENT_TEAM = 8LW288N9XW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "app-demo-xcode-Info.plist";
@@ -434,7 +434,7 @@
 				CODE_SIGN_ENTITLEMENTS = "app-demo_xcode/app_demo_xcode.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CH9383WKGT;
+				DEVELOPMENT_TEAM = 8LW288N9XW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "app-demo-xcode-Info.plist";
