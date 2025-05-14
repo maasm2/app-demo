@@ -39,7 +39,30 @@ struct ContentView: View {
             print("Step Count is not available")
             return
         }
+        
+        let startOfDay = Calendar.current.startOfDay(Date())
+        let endDate = Date()
+        
+        let stepsToday = HKQuery.predicateForSamples(withStart: startOfDay, end: Date())
+        
+        
+        let everyDay = DateComponents(day: 1)
+        
+        let sumOfStepsQuery = HKStatisticsCollectionQueryDescriptor(
+            predicate: stepsToday,
+            options: .cumulativeSum,
+            anchorDate: endDate,
+            intervalComponents: everyDay)
        
+        let updateQueue = sumOfStepsQuery.results(for: store)
+        
+        updateTask = Task {
+            for try await results in updateQueue {
+                results.statistics()
+                
+            }
+        }
+        
         
         let readTypesWGT: Set = [wgt]
         let writeTypesWGT: Set = [wgt]
