@@ -47,6 +47,12 @@ struct ContentView: View {
             return
         }
         
+        guard let stepCount = HKObjectType.quantityType(forIdentifier: .stepCount) else {
+            print("Step Count is not available")
+            return
+        }
+       
+        
         let readTypesWGT: Set = [wgt]
         let writeTypesWGT: Set = [wgt]
         
