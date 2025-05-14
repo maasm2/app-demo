@@ -19,11 +19,8 @@ struct ContentView: View {
                 
                 NavigationLink(destination: SecondView()) {
                     VStack {
-                        Image(systemName: "scalemass.fill")
                         Text("Your weight")
-                            .foregroundColor(.white)
-                            .padding()
-                            .cornerRadius(10)
+                        Image(systemName: "scalemass.fill")
                     }
                 }
             }
