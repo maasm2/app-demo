@@ -73,7 +73,18 @@ struct ContentView: View {
         
         let startOfDay = Calendar.current.startOfDay(for: Date())
         let predicate = HKQuery.predicateForSamples(withStart: startOfDay, end: Date(), options: .strictStartDate)
+         
+        let sampleQuery = HKSampleQuery(sampleType: stepType, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { query, samples, error in
+            if let samples = samples as? [HKQuantitySample] {
+                for sample in samples {
+                    let steps = sample.quantity.doubleValue(for: HKUnit.count())
+                    let source = sample.sourceRevision.source.name
+                    print("Source: \(source), Steps: \(steps)")
+                }
+            }
+        }
         
+  
         let query = HKStatisticsQuery(quantityType: stepType, quantitySamplePredicate: predicate, options: .cumulativeSum) { _, result, error in
             guard let result = result, let sum = result.sumQuantity() else {
                 print("Failed to fetch step count: \(error?.localizedDescription ?? "Unknown error")")
@@ -81,12 +92,14 @@ struct ContentView: View {
             }
             
             let steps = Int(sum.doubleValue(for: HKUnit.count()))
+            print("Total steps: \(steps)")
             
             DispatchQueue.main.async {
                 self.stepCount = steps
             }
         }
         
+        healthStore.execute(sampleQuery)
         healthStore.execute(query)
     }
 }
